@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Dawson\\Youtube\\": "src/"
+            "Rajagonda\\GondaYtUploads\\": "src/"
         }
     },
     "autoload-dev": {

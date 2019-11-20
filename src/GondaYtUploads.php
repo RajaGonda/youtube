@@ -367,7 +367,7 @@ class GondaYtUploads
 
         );
 
-        if ($this->app->config->get('GondaYtUploads.auth') == true) {
+        if ($this->app->config->get('GondaYtUploads.auth') == true && isset(\Auth::user()->id)) {
             $inserData['user_id'] = \Auth::user()->id;
         }
 
@@ -390,7 +390,7 @@ class GondaYtUploads
 
         $authUser = null;
         $getChannel = null;
-        if ($this->app->config->get('GondaYtUploads.auth') == true) {
+        if ($this->app->config->get('GondaYtUploads.auth') == true && isset(\Auth::user()->id)) {
             $authUser = \Auth::user()->id;
         }
 

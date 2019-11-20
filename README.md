@@ -15,7 +15,7 @@ Now register the Service provider in `config/app.php`
 ```php
 'providers' => [
     ...
-    Dawson\Youtube\YoutubeServiceProvider::class,
+    Rajagonda\GondaYtUploads\GondaYtUploadsServiceProvider::class,
 ],
 ```
 

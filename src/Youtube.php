@@ -1,13 +1,13 @@
 <?php
 
-namespace Rajagonda\GondaYtUploads;
+namespace Rajagonda\Youtube;
 
 use Exception;
 use Google_Client;
 use Google_Service_YouTube;
 use Illuminate\Support\Facades\DB;
 
-class GondaYtUploads
+class Youtube
 {
     /**
      * Application Container
@@ -72,16 +72,16 @@ class GondaYtUploads
     /**
      * Upload the video to YouTube
      *
-     * @param string $path
-     * @param array $data
-     * @param string $privacyStatus
+     * @param  string $path
+     * @param  array $data
+     * @param  string $privacyStatus
      * @return self
      * @throws Exception
      */
     public function upload($path, array $data = [], $privacyStatus = 'public')
     {
-        if (!file_exists($path)) {
-            throw new Exception('Video file does not exist at path: "' . $path . '". Provide a full path to the file before attempting to upload.');
+        if(!file_exists($path)) {
+            throw new Exception('Video file does not exist at path: "'. $path .'". Provide a full path to the file before attempting to upload.');
         }
 
         $this->handleAccessToken();
@@ -130,7 +130,7 @@ class GondaYtUploads
             // Set the Snippet from Uploaded Video
             $this->snippet = $status['snippet'];
 
-        } catch (\Google_Service_Exception $e) {
+        }  catch (\Google_Service_Exception $e) {
             throw new Exception($e->getMessage());
         } catch (\Google_Exception $e) {
             throw new Exception($e->getMessage());
@@ -142,9 +142,9 @@ class GondaYtUploads
     /**
      * Update the video on YouTube
      *
-     * @param string $id
-     * @param array $data
-     * @param string $privacyStatus
+     * @param  string $id
+     * @param  array $data
+     * @param  string $privacyStatus
      * @return self
      * @throws Exception
      */
@@ -153,7 +153,7 @@ class GondaYtUploads
         $this->handleAccessToken();
 
         if (!$this->exists($id)) {
-            throw new Exception('A video matching id "' . $id . '" could not be found.');
+            throw new Exception('A video matching id "'. $id .'" could not be found.');
         }
 
         try {
@@ -166,7 +166,7 @@ class GondaYtUploads
 
             // Set the Snippet from Updated Video
             $this->snippet = $status['snippet'];
-        } catch (\Google_Service_Exception $e) {
+        }  catch (\Google_Service_Exception $e) {
             throw new Exception($e->getMessage());
         } catch (\Google_Exception $e) {
             throw new Exception($e->getMessage());
@@ -178,7 +178,7 @@ class GondaYtUploads
     /**
      * Set a Custom Thumbnail for the Upload
      *
-     * @param string $imagePath
+     * @param  string $imagePath
      * @return self
      * @throws Exception
      */
@@ -207,7 +207,7 @@ class GondaYtUploads
             $handle = fopen($imagePath, "rb");
 
             while (!$status && !feof($handle)) {
-                $chunk = fread($handle, $chunkSizeBytes);
+                $chunk  = fread($handle, $chunkSizeBytes);
                 $status = $media->nextChunk($chunk);
             }
 
@@ -228,7 +228,7 @@ class GondaYtUploads
     /**
      * Delete a YouTube video by it's ID.
      *
-     * @param int $id
+     * @param  int $id
      * @return bool
      * @throws Exception
      */
@@ -237,7 +237,7 @@ class GondaYtUploads
         $this->handleAccessToken();
 
         if (!$this->exists($id)) {
-            throw new Exception('A video matching id "' . $id . '" could not be found.');
+            throw new Exception('A video matching id "'. $id .'" could not be found.');
         }
 
         return $this->youtube->videos->delete($id);
@@ -254,9 +254,9 @@ class GondaYtUploads
         // Setup the Snippet
         $snippet = new \Google_Service_YouTube_VideoSnippet();
 
-        if (array_key_exists('title', $data)) $snippet->setTitle($data['title']);
+        if (array_key_exists('title', $data))       $snippet->setTitle($data['title']);
         if (array_key_exists('description', $data)) $snippet->setDescription($data['description']);
-        if (array_key_exists('tags', $data)) $snippet->setTags($data['tags']);
+        if (array_key_exists('tags', $data))        $snippet->setTags($data['tags']);
         if (array_key_exists('category_id', $data)) $snippet->setCategoryId($data['category_id']);
 
         // Set the Privacy Status
@@ -265,7 +265,8 @@ class GondaYtUploads
 
         // Set the Snippet & Status
         $video = new \Google_Service_YouTube_Video();
-        if ($id) {
+        if ($id)
+        {
             $video->setId($id);
         }
 
@@ -278,7 +279,7 @@ class GondaYtUploads
     /**
      * Check if a YouTube video exists by it's ID.
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return bool
      */
@@ -332,22 +333,22 @@ class GondaYtUploads
      */
     private function setup(Google_Client $client)
     {
-        if (
-            !$this->app->config->get('GondaYtUploads.client_id') ||
-            !$this->app->config->get('GondaYtUploads.client_secret')
+        if(
+            !$this->app->config->get('youtube.client_id') ||
+            !$this->app->config->get('youtube.client_secret')
         ) {
             throw new Exception('A Google "client_id" and "client_secret" must be configured.');
         }
 
-        $client->setClientId($this->app->config->get('GondaYtUploads.client_id'));
-        $client->setClientSecret($this->app->config->get('GondaYtUploads.client_secret'));
-        $client->setScopes($this->app->config->get('GondaYtUploads.scopes'));
+        $client->setClientId($this->app->config->get('youtube.client_id'));
+        $client->setClientSecret($this->app->config->get('youtube.client_secret'));
+        $client->setScopes($this->app->config->get('youtube.scopes'));
         $client->setAccessType('offline');
         $client->setApprovalPrompt('force');
         $client->setRedirectUri(url(
-            $this->app->config->get('GondaYtUploads.routes.prefix')
+            $this->app->config->get('youtube.routes.prefix')
             . '/' .
-            $this->app->config->get('GondaYtUploads.routes.redirect_uri')
+            $this->app->config->get('youtube.routes.redirect_uri')
         ));
 
         return $this->client = $client;
@@ -356,7 +357,7 @@ class GondaYtUploads
     /**
      * Saves the access token to the database.
      *
-     * @param string $accessToken
+     * @param  string  $accessToken
      */
     public function saveAccessTokenToDB($accessToken)
     {
@@ -367,16 +368,15 @@ class GondaYtUploads
 
         );
 
-        if ($this->app->config->get('GondaYtUploads.auth') == true && isset(\Auth::user()->id)) {
+        if ($this->app->config->get('youtube.auth') == true && isset(\Auth::user()->id)) {
             $inserData['user_id'] = \Auth::user()->id;
         }
 
-        if ($this->app->config->get('GondaYtUploads.tokenSession_by_channel') == true && !empty(session('current_channel_id'))) {
+        if ($this->app->config->get('youtube.tokenSession_by_channel') == true && !empty(session('current_channel_id'))) {
             $inserData['channel_id'] = session('current_channel_id');
         }
 
-        return DB::table('youtube_access_tokens_list')->insert($inserData);
-
+        return DB::table('youtube_access_tokens')->insert($inserData);
 
     }
 
@@ -388,13 +388,15 @@ class GondaYtUploads
     public function getLatestAccessTokenFromDB()
     {
 
+
+
         $authUser = null;
         $getChannel = null;
-        if ($this->app->config->get('GondaYtUploads.auth') == true && isset(\Auth::user()->id)) {
+        if ($this->app->config->get('youtube.auth') == true && isset(\Auth::user()->id)) {
             $authUser = \Auth::user()->id;
         }
 
-        if ($this->app->config->get('GondaYtUploads.tokenSession_by_channel') == true && !empty(session('current_channel_id'))) {
+        if ($this->app->config->get('youtube.tokenSession_by_channel') == true && !empty(session('current_channel_id'))) {
             $getChannel = session('current_channel_id');
         }
 
@@ -409,7 +411,12 @@ class GondaYtUploads
             ->latest('created_at')
             ->first();
 
-        return $latest ? (is_array($latest) ? $latest['access_token'] : $latest->access_token) : null;
+
+//        $latest = DB::table('youtube_access_tokens')
+//                    ->latest('created_at')
+//                    ->first();
+
+        return $latest ? (is_array($latest) ? $latest['access_token'] : $latest->access_token ) : null;
     }
 
     /**
@@ -423,9 +430,11 @@ class GondaYtUploads
             throw new \Exception('An access token is required.');
         }
 
-        if ($this->client->isAccessTokenExpired()) {
+        if($this->client->isAccessTokenExpired())
+        {
             // If we have a "refresh_token"
-            if (array_key_exists('refresh_token', $accessToken)) {
+            if (array_key_exists('refresh_token', $accessToken))
+            {
                 // Refresh the access token
                 $this->client->refreshToken($accessToken['refresh_token']);
 
@@ -438,8 +447,8 @@ class GondaYtUploads
     /**
      * Pass method calls to the Google Client.
      *
-     * @param string $method
-     * @param array $args
+     * @param  string  $method
+     * @param  array   $args
      *
      * @return mixed
      */

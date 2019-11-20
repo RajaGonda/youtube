@@ -3,28 +3,30 @@
 /**
  * Route URI's
  */
-Route::group(['prefix' => config('GondaYtUploads.routes.prefix')], function () {
+Route::group(['prefix' => config('youtube.routes.prefix')], function() {
 
     /**
      * Authentication
      */
-    Route::get(config('GondaYtUploads.routes.authentication_uri'), function () {
-        return redirect()->to(GondaYtUploads::createAuthUrl());
+    Route::get(config('youtube.routes.authentication_uri'), function()
+    {
+        return redirect()->to(Youtube::createAuthUrl());
     });
 
     /**
      * Redirect
      */
-    Route::get(config('GondaYtUploads.routes.redirect_uri'), function (Illuminate\Http\Request $request) {
-        if (!$request->has('code')) {
+    Route::get(config('youtube.routes.redirect_uri'), function(Illuminate\Http\Request $request)
+    {
+        if(!$request->has('code')) {
             throw new Exception('$_GET[\'code\'] is not set. Please re-authenticate.');
         }
 
-        $token = GondaYtUploads::authenticate($request->get('code'));
+        $token = Youtube::authenticate($request->get('code'));
 
-        GondaYtUploads::saveAccessTokenToDB($token);
+        Youtube::saveAccessTokenToDB($token);
 
-        return redirect(config('GondaYtUploads.routes.redirect_back_uri', '/'));
+        return redirect(config('youtube.routes.redirect_back_uri', '/'));
     });
 
 });

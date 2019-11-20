@@ -1,41 +1,41 @@
 {
-    "name": "rajagonda/gondaytuploads",
+    "name": "rajagonda/youtube",
     "description": "Upload a video to YouTube with Laravel 5.",
     "license": "MIT",
     "authors": [
         {
             "name": "rajagonda",
-            "email": "rajagonda@gmail.com"
+            "email": "rajagonda"
         }
     ],
     "require": {
-        "php": "^7.3",
-        "illuminate/support": "^6.0.2",
+        "php": "^7.0",
+        "illuminate/support": "^5.4",
         "google/apiclient": "^2.2"
     },
     "require-dev": {
         "orchestra/testbench": "~3.2",
-        "phpunit/phpunit": "8.0",
-        "phpunit/phpcov": "~6.0"
+        "phpunit/phpunit": "~5.0",
+        "phpunit/phpcov": "~3.0"
     },
     "autoload": {
         "psr-4": {
-            "Rajagonda\\GondaYtUploads\\": "src/"
+            "Rajagonda\\Youtube\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rajagonda\\GondaYtUploads\\Tests\\": "tests/"
+            "Rajagonda\\Youtube\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Rajagonda\\GondaYtUploads\\GondaYtUploadsServiceProvider"
+                "Rajagonda\\Youtube\\YoutubeServiceProvider"
             ],
             "aliases": {
-                "GondaYtUploads": "Rajagonda\\GondaYtUploads\\Facades\\GondaYtUploads"
+                "Youtube": "Rajagonda\\Youtube\\Facades\\Youtube"
             }
         }
     }

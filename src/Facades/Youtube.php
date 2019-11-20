@@ -1,10 +1,10 @@
 <?php
 
-namespace Rajagonda\GondaYtUploads\Facades;
+namespace Rajagonda\Youtube\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class GondaYtUploads extends Facade
+class Youtube extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class GondaYtUploads extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'GondaYtUploads';
+        return 'youtube';
     }
 }

@@ -7,7 +7,7 @@
 To install, use the following to pull the package in via Composer.
 
 ```
-composer require Rajagonda/GondaYtUploads
+composer require rajagonda/youtube
 ```
 
 Now register the Service provider in `config/app.php`
@@ -15,7 +15,7 @@ Now register the Service provider in `config/app.php`
 ```php
 'providers' => [
     ...
-    Rajagonda\GondaYtUploads\GondaYtUploadsServiceProvider::class,
+    Rajagonda\Youtube\YoutubeServiceProvider::class,
 ],
 ```
 
@@ -24,19 +24,19 @@ And also add the alias to the same file.
 ```php
 'aliases' => [
     ...
-    'GondaYtUploads' => Rajagonda\GondaYtUploads\Facades\GondaYtUploads::class,
+    'Youtube' => Rajagonda\Youtube\Facades\Youtube::class,
 ],
 ```
 
 ## Configuration
 
-You now need to publish the `GondaYtUploads.php` config and migrations.
+You now need to publish the `youtube.php` config and migrations.
 
 ```
-php artisan vendor:publish --provider="Rajagonda\GondaYtUploads\GondaYtUploadsServiceProvider"
+php artisan vendor:publish --provider="Rajagonda\Youtube\YoutubeServiceProvider"
 ```
 
-Now you'll want to run `php artisan migrate` to create the `youtube_access_tokens_list` table which as you would imagine, will contain your access tokens once you're authenticated correctly.
+Now you'll want to run `php artisan migrate` to create the `youtube_access_tokens` table which as you would imagine, will contain your access tokens once you're authenticated correctly.
 
 ### Obtaining your Credentials
 
@@ -51,13 +51,7 @@ Once you are happy with everything, create the credentials and you will be provi
 ```
 GOOGLE_CLIENT_ID=YOUR_CLIENT_ID
 GOOGLE_CLIENT_SECRET=YOUR_SECRET
-TY_TOKEN_BY_CHANNEL=boolean
-TY_AUTH_USER=boolean
 ```
-
-### Token BY channel
-
-need to create  session "current_channel_id"
 
 ### Authentication
 
@@ -69,7 +63,7 @@ Assuming you were not presented with any errors during authentication, you will 
 
 ### Reviewing your Token
 
-Previously, users of this package have reported issues with their access token(s). To ensure you have the correct token, you simply need to review the `youtube_access_tokens_list` table you migrated earlier and review the value in the `access_token` column.
+Previously, users of this package have reported issues with their access token(s). To ensure you have the correct token, you simply need to review the `youtube_access_tokens` table you migrated earlier and review the value in the `access_token` column.
 
 **You need to check that a `refresh_token` exists within this value. If this is correct, you're all set to begin uploading.**
 
@@ -82,7 +76,7 @@ To upload a video, you simply need to pass the **full** path to your video you w
 Here's an example:
 
 ```php
-$video = GondaYtUploads::upload($fullPathToVideo, [
+$video = Youtube::upload($fullPathToVideo, [
     'title'       => 'My Awesome Video',
     'description' => 'You can also specify your video description here.',
     'tags'	      => ['foo', 'bar', 'baz'],
@@ -99,7 +93,7 @@ By default, video uploads are public. If you would like to change the privacy of
 For example, the below will upload the video as `unlisted`.
 
 ```php
-$video = GondaYtUploads::upload($fullPathToVideo, $params, 'unlisted');
+$video = Youtube::upload($fullPathToVideo, $params, 'unlisted');
 ```
 
 ### Custom Thumbnail
@@ -109,7 +103,7 @@ If you would like to set a custom thumbnail for for upload, you can use the `wit
 ```php
 $fullpathToImage = storage_path('app/public/thumbnail.jpg');
 
-$video = GondaYtUploads::upload($fullPathToVideo, $params)->withThumbnail($fullpathToImage);
+$video = Youtube::upload($fullPathToVideo, $params)->withThumbnail($fullpathToImage);
 
 return $youtube->getThumbnailUrl();
 ```
@@ -123,7 +117,7 @@ To update a video, you simply need to pass the **videoId** of the video you wish
 Here's an example:
 
 ```php
-$video = GondaYtUploads::update($videoId, [
+$video = Youtube::update($videoId, [
     'title'       => 'My Awesome Video',
     'description' => 'You can also specify your video description here.',
     'tags'	      => ['foo', 'bar', 'baz'],
@@ -140,7 +134,7 @@ Note: This request is explicit. Any params left out of the request will be remov
 If you would like to delete a video, which of course is uploaded to your authorized channel, you will also have the ability to delete it:
 
 ```php
-GondaYtUploads::delete($videoId);
+Youtube::delete($videoId);
 ```
 
 When deleting a video, it will check if exists before attempting to delete.

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'auth' => env('TY_AUTH_USER', false),
+    'tokenSession_by_channel' => env('TY_TOKEN_BY_CHANNEL', false),
 
     /**
      * Client ID.
@@ -24,13 +26,9 @@ return [
     /**
      * Route URI's
      */
-
-    'auth' => env('TY_AUTH_USER', false),
-    'tokenSession_by_channel' => env('TY_TOKEN_BY_CHANNEL', false),
-
     'routes' => [
 
-        /**
+        /** 
          * Determine if the Routes should be disabled.
          * Note: We recommend this to be set to "false" immediately after authentication.
          */

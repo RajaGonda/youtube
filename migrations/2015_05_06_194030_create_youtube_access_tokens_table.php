@@ -12,7 +12,7 @@ class CreateYoutubeAccessTokensTable extends Migration
      */
     public function up()
     {
-        Schema::create('youtube_access_tokens_list', function(Blueprint $table)
+        Schema::create('youtube_access_tokens', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('user_id')->nullable();
@@ -20,6 +20,8 @@ class CreateYoutubeAccessTokensTable extends Migration
             $table->integer('status')->default(1);
             $table->text('access_token');
             $table->timestamps();
+
+
         });
     }
 
@@ -30,6 +32,6 @@ class CreateYoutubeAccessTokensTable extends Migration
      */
     public function down()
     {
-        Schema::drop('youtube_access_tokens_list');
+        Schema::drop('youtube_access_tokens');
     }
 }

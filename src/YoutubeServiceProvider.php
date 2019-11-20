@@ -1,10 +1,10 @@
 <?php
 
-namespace Rajagonda\GondaYtUploads;
+namespace Rajagonda\Youtube;
 
 use Illuminate\Support\ServiceProvider;
 
-class GondaYtUploadsServiceProvider extends ServiceProvider
+class YoutubeServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -18,17 +18,17 @@ class GondaYtUploadsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $config = realpath(__DIR__.'/../config/GondaYtUploads.php');
+        $config = realpath(__DIR__.'/../config/youtube.php');
 
-        $this->publishes([$config => config_path('GondaYtUploads.php')], 'config');
+        $this->publishes([$config => config_path('youtube.php')], 'config');
 
-        $this->mergeConfigFrom($config, 'GondaYtUploads');
+        $this->mergeConfigFrom($config, 'youtube');
 
         $this->publishes([
             __DIR__.'/../migrations/' => database_path('migrations')
         ], 'migrations');
 
-        if($this->app->config->get('GondaYtUploads.routes.enabled')) {
+        if($this->app->config->get('youtube.routes.enabled')) {
             include __DIR__.'/../routes/web.php';
         }
     }
@@ -38,8 +38,8 @@ class GondaYtUploadsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('GondaYtUploads', function($app) {
-            return new GondaYtUploads($app, new \Google_Client);
+        $this->app->singleton('youtube', function($app) {
+            return new Youtube($app, new \Google_Client);
         });
     }
 }

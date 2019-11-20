@@ -401,7 +401,7 @@ class Youtube
         }
 
 
-        $latest = DB::table('youtube_access_tokens_list')
+        $latest = DB::table('youtube_access_tokens')
             ->when($authUser, function ($query) use ($authUser) {
                 return $query->where('user_id', $authUser);
             })

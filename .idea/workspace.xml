@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb2a6db7-ab16-43e8-bf26-6c9817b28efc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Youtube.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youtube.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,20 +27,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Youtube.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="398" column="44" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="44" />
+            <state relative-caret-position="158">
+              <caret line="403" column="50" selection-start-line="403" selection-start-column="29" selection-end-line="403" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="225">
+              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -79,10 +78,10 @@
     <findStrings>
       <find>'youtube</find>
       <find>phpunit/phpunit</find>
-      <find>youtube_access_tokens</find>
       <find>GondaYtUploadsServiceProvider</find>
       <find>Dawson</find>
       <find>save</find>
+      <find>youtube_access_tokens</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -105,8 +104,8 @@
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/config/youtube.php" />
         <option value="$PROJECT_DIR$/migrations/2015_05_06_194030_create_youtube_access_tokens_table.php" />
-        <option value="$PROJECT_DIR$/src/Youtube.php" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/Youtube.php" />
       </list>
     </option>
   </component>
@@ -197,12 +196,12 @@
       <option name="presentableId" value="Default" />
       <updated>1574225198149</updated>
       <workItem from="1574225199498" duration="2224000" />
-      <workItem from="1574227508438" duration="5026000" />
+      <workItem from="1574227508438" duration="5619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7250000" />
+    <option name="totallyTimeSpent" value="7843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="337" y="23" width="1583" height="937" extended-state="0" />
@@ -309,17 +308,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Youtube.php">
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="398" column="44" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="44" />
+        <state relative-caret-position="225">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/src/Youtube.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="158">
+          <caret line="403" column="50" selection-start-line="403" selection-start-column="29" selection-end-line="403" selection-end-column="50" />
         </state>
       </provider>
     </entry>

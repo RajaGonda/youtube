@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb2a6db7-ab16-43e8-bf26-6c9817b28efc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/GondaYtUploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/youtube.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/2015_05_06_194030_create_youtube_access_tokens_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2015_05_06_194030_create_youtube_access_tokens_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Facades/GondaYtUploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facades/Youtube.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GondaYtUploads.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Youtube.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GondaYtUploadsServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/YoutubeServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +27,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Youtube.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="414" column="7" lean-forward="true" selection-start-line="414" selection-start-column="7" selection-end-line="416" selection-end-column="32" />
+            <state relative-caret-position="198">
+              <caret line="398" column="44" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -100,12 +100,12 @@
         <option value="$PROJECT_DIR$/src/GondaYtUploads.php" />
         <option value="$PROJECT_DIR$/src/Facades/Youtube.php" />
         <option value="$PROJECT_DIR$/src/YoutubeServiceProvider.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/config/youtube.php" />
         <option value="$PROJECT_DIR$/migrations/2015_05_06_194030_create_youtube_access_tokens_table.php" />
         <option value="$PROJECT_DIR$/src/Youtube.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -196,12 +196,12 @@
       <option name="presentableId" value="Default" />
       <updated>1574225198149</updated>
       <workItem from="1574225199498" duration="2224000" />
-      <workItem from="1574227508438" duration="3812000" />
+      <workItem from="1574227508438" duration="3944000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6036000" />
+    <option name="totallyTimeSpent" value="6168000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="337" y="23" width="1583" height="937" extended-state="0" />
@@ -280,13 +280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Facades/Youtube.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -317,8 +310,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Youtube.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="414" column="7" lean-forward="true" selection-start-line="414" selection-start-column="7" selection-end-line="416" selection-end-column="32" />
+        <state relative-caret-position="198">
+          <caret line="398" column="44" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
         </state>
       </provider>
     </entry>
